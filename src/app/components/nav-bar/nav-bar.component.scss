@@ -1,0 +1,36 @@
+.active{
+
+    transform: scale(1.3);
+}
+
+
+@media only screen and (max-width:1000px)
+{
+ h1{
+    font-size: 0.8rem !important;
+ }
+    button{
+        font-size: 0.5rem;
+    }
+
+// #NavMenu{  width: 900px !important;}
+
+}
+
+
+
+
+
+
+@media only screen and (max-width:600px)
+{
+ h1{
+    font-size: 0.5rem !important;
+ }
+    button{
+        font-size: 0.3rem;
+    }
+
+#NavMenu{  width: 360px !important;}
+
+}
