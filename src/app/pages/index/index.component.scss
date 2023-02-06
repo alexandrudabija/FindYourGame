@@ -1,0 +1,409 @@
+#showGames {
+  padding: 0;
+
+
+}
+
+#rate {
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+#formore {
+  font-size: 0.5rem;
+  margin-left: 6px;
+
+
+}
+
+
+.FilterMenu {
+  position: sticky;
+  top: 140px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#space {
+
+  height: 50px !important;
+}
+
+#btnMore {
+
+
+  margin-left: 9px;
+}
+
+
+#imgGalleryBtn {
+  height: 20px;
+
+  position: relative;
+  top: -30px;
+}
+
+#border-2 {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  justify-content: center !important;
+  justify-items: center;
+  height: 700px;
+
+}
+
+.position {
+
+  margin-top: 10px;
+  // left: 69px;
+  // bottom: 30px;
+}
+
+
+#MainImg {
+  display: flex;
+  justify-items: center;
+  width: 462px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+
+.game {
+  margin: 20px;
+  width: 520px;
+
+}
+
+
+
+
+#border {
+
+  border-color: aliceblue;
+
+
+  padding: 0;
+  margin: 0;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 5px black;
+  cursor: pointer;
+
+
+
+
+}
+
+#border:hover {
+
+
+  box-shadow: 5px 5px 5px 5px white;
+}
+
+
+
+
+
+#row {
+
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: 320px, 320px;
+  grid-template-areas: "game  game";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// daca  montitorul are 1000 px sau mai putin atunci se aplica
+@media only screen and (max-width:600px) {
+
+
+  h1 {
+    font-size: 0.3em;
+  }
+
+  h2 {
+    font-size: 0.5em;
+  }
+
+  h3 {
+    font-size: 0.9em;
+  }
+
+  h4 {
+    font-size: 0.9em;
+  }
+
+  #rating {
+    font-size: 0.6em;
+  }
+
+
+
+
+  button {
+    font-size: 0.8em;
+
+  }
+
+
+  circle-progress {
+    size: 1rem;
+
+  }
+
+
+  .position {
+    size: 150px !important;
+    position: relative;
+    left: 65px;
+    bottom: 39px;
+    display: none;
+  }
+
+
+
+
+  span {
+    font-size: 0.3em;
+  }
+
+
+
+  #showGames {
+
+    width: 0px;
+    display: flex;
+    justify-items: center !important;
+    flex-direction: column;
+
+  }
+
+
+
+
+  #platform {
+
+    width: 0.9rem !important;
+  }
+
+  #genres {
+    font-size: 0.6rem;
+  }
+
+
+
+  #MainImg {
+    width: 200px !important;
+    height: 230px !important;
+  }
+
+
+  #imgGalleryBtn {
+    width: 5px !important;
+
+  }
+
+
+
+
+
+  #row {
+    margin-top: 20px !important;
+    display: flex;
+    flex-direction: row;
+    width: 0px;
+    justify-items: center;
+  }
+
+  .game {
+
+    width: 55%;
+
+  }
+
+
+  #border {
+    display: flex;
+    justify-items: center;
+
+    border-color: aliceblue;
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px black;
+    cursor: pointer;
+
+
+
+
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// daca  montitorul are 1000 px sau mai putin atunci se aplica
+@media only screen and (max-width:1000px) {
+
+
+
+  h1 {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 0.5em;
+  }
+
+  h3 {
+    font-size: 0.2em;
+  }
+
+  button {
+    font-size: 0.5em;
+  }
+
+  span {
+    font-size: 0.8em;
+  }
+
+
+
+
+  #MainImg {
+
+    width: 300px;
+
+  }
+
+
+
+
+
+
+
+  #row {
+
+    display: grid;
+    justify-content: center;
+
+    grid-template-areas: "game";
+  }
+
+
+
+
+  #border {
+
+    border-color: aliceblue;
+
+
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px black;
+    cursor: pointer;
+
+
+
+
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+// daca  montitorul are 1490 px sau mai putin atunci se aplica
+@media only screen and (max-width:1490px) {
+
+
+
+
+  #row {
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 500px, ;
+    grid-template-rows: 1.5fr;
+    grid-template-areas: "game";
+  }
+
+
+  #MainImg {
+
+    width: 470px;
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+//daca e 1900 sau mai mare se aplica !
+@media only screen and (min-width:1900px) {
+
+  #row {
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 440px, 440px, 440px;
+    grid-template-rows: 1.2fr, 1.2fr, 1.2fr;
+    grid-template-areas: "game game game";
+  }
+
+  .game {
+
+    width: 520px;
+
+  }
+
+  #MainImg {
+
+    width: 492px !important;
+
+  }
+
+
+
+}

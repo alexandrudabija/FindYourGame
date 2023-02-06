@@ -1,0 +1,327 @@
+
+   <h1 class="text-center container-fluid mt-4 text-light">Xbox</h1>
+   <div id="muteYouTubeVideoPlayer"class="d-flex  justify-content-center  " >
+    <iframe  class="container-fluid "   height="460"src=" https://www.youtube.com/embed/SEpWlFfpEkU?autoplay=1"  allow='autoplay' ></iframe>
+
+  </div>
+
+ <div class=" container-fluid d-flex  text-light align-items-center  " >
+
+
+
+
+
+    <input  placeholder="insert your Game" class=" mb-4 container-fluid   form-control mt-3 text-center   bg-dark text-light " type="text"  [(ngModel)]="this.filterstring">
+
+
+   </div>
+
+
+
+ <!-- showGames  -->
+ <!-- 1 -->
+ <div  class="bg-dark  mt-2 container-fluid rounded  ">
+  <div class="d-flex  align-items-center justify-content-around " >
+
+    <div class=" d-flex  align-items-center justify-items-around "
+
+          *ngFor="let bt of this.array ;let i=index " >
+  <button
+*ngIf="this.filter(this.array[this.G]?.results,this.filterstring, 'Xbox One')"
+
+
+          class="btn btn-outline-danger mt-3"  (click)="RetApi(i)">{{i+1}}
+
+
+        </button>
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="text-center" *ngIf="this.filter(this.array[this.G]?.results,this.filterstring, 'Xbox One')?.length === 0"><h1 style="color: aliceblue;">No have data for this page , Change page ! </h1></div>
+
+<!-- 2 -->
+<div id="row"      class="container-fluid  mt-2" >
+
+<!-- 3 -->
+<div class="game container-fluid bg-dark    "
+
+     (mouseenter)="this.openForMore(N)"
+     (mouseleave)="this.indexGallery=0"
+     (mouseleave)="this.isOpen2=false"
+
+     (mouseleave)="this.isOpen=true"
+
+
+     *ngFor="let games   of  this.filter(this.array[this.G]?.results,this.filterstring, 'Xbox One') let N=index    "  >  <!-- for pipe | filter: this.filterstring  -->
+
+
+             <!-- this.array[this.G].results   -->
+
+                           <!-- For all obj in one page  -->
+
+             <!-- <div  *ngFor="let games of   this.filter(a?.results,this.filterstring)   "
+             class="game container-fluid    "   (mouseenter)="this.openForMore(N)"
+             (mouseleave)="this.indexGallery=0"
+             (mouseleave)="this.isOpen2=false"
+
+             (mouseleave)="this.isOpen=true"
+             > -->
+
+
+
+<!-- 4 -->
+<div id="border" class="d-flex justify-content-center container-fluid  " >
+<!-- 5-->
+<div id="border-2"  >
+
+  <h1 *ngIf="games.name.length<=15" class="text-center text-light mt-1 mb-2">{{games.name}} </h1>
+  <h4 *ngIf="games.name.length>=16" class="text-center text-light mt-1 mb-2">{{games.name}} </h4>
+
+    <div class="bg  d-flex justify-content-between container-fluid " >
+
+          <h4 class="text-muted">Released</h4>
+            <h4 class="text-muted">{{games.released}}</h4>
+
+      </div>
+
+
+       <iframe *ngIf=" games.name==='Borderlands 3'"   id="MainImg"
+           src="https://www.youtube.com/embed/n7mUwX5IPRs?autoplay=1&mute=1&enablejsapi=1" >
+
+          </iframe>
+
+        <div  class="" *ngIf="N !== this.Nopen  && games.short_screenshots.length !== null &&  games.name!=='Borderlands 3' " >
+
+
+        <img   id="MainImg" src={{games?.background_image}}    >
+
+        <div id="imgGalleryBtn"  class="d-flex  align-items-center justify-content-between  ">
+
+
+
+
+
+
+       </div>
+        </div>
+
+          <!--   if gallery is null -->
+        <div    class="imgGallery"  *ngIf=" N === this.Nopen && games.short_screenshots.length !== null &&  games.name!=='Borderlands 3' " >
+
+
+
+                  <img id="MainImg" src={{games.short_screenshots[this.indexGallery]?.image}}   >
+
+
+                  <div id="imgGalleryBtn"  class="d-flex  align-items-center justify-content-between  ">
+
+
+
+                        <div   *ngFor="let short_screenshots of games.short_screenshots let i = index "
+                        style=" width: 35px ;  " (mouseenter)="this.indexGallery=i" class="btn btn-outline-light"></div>
+
+
+                      </div>
+
+</div>
+
+
+
+
+
+
+
+
+                <div id="rating" >
+                            <div class="d-flex justify-content-between mt-3 container-fluid"> <h4 class="m-1 mt-1"
+                               [ngClass]="games.rating <= 2 ? 'text-primary': games.rating>=4 ? 'text-warning':'text-danger' " ><span>Rating : </span>  {{games.rating}}</h4>
+
+                              <h4 class=" btn   "
+                                [ngClass]="games.metacritic <= 30 ? 'btn-outline-success':  games.metacritic >=80 ? 'btn-outline-warning':'btn-outline-primary' ">   Metascore : {{games.metacritic}}</h4>
+
+                            </div>
+
+    <div  class="d-flex m-3">
+
+                                  <div *ngFor="let platform of games.platforms"  >
+                                  <!-- {{  platform.platform.name}}
+                                  PC
+                                  Xbox One
+                                  PlayStation 4
+                                  Nintendo Switch
+                                  macOS -->
+
+                                    <img id="platform" width="30px;" style="margin: 2px;" *ngIf="platform.platform.name=='PlayStation 4'" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABsElEQVRIie3VPWgVQRDA8Z+aGLHSgIUmSAgasNLCwkILEcQmdoIiWCadgiaNYmGjiDYWYh0QRIOtYBFC9CFoIWIXBAVJkegTIn5EFBOL2/CW5bKCz3svRQaG42Zn9j9zs7fDmqxS2dku8CvM4gHOYGsrwUuR/kINF9HXSnCsixivKoEU/AWjqEe2eRyqGlwL9vOJ/RN6chutbzKRxfB8n9i7MVIlOCdH2wXOHrIqwZuwrh3g5ZPecnAtt1gV+Buu5Bw6/hPoKa5iPz7gJl43s+E+XMeL8J5eIE8ysdmvWVbxbpzCSewJtrm/JHgYpxUVb8c2xYlewAyeY0Ix1b6nwQcwqXwAPA4+K1V8O7FP4w5u4Flkr2Mohl5TXH9x8BtcQn/klwPPKNqyN/IfwFgS8zkGf0wWzyl61IGDYcOuDLhXo6dbMJxUuqw/cSEGX04c5vESXyPb5gx4A47hnqKvKbAekt+hRE4ofvrfJUk8wsYMOB2LSyGB+xhEZwqLT/V40G7sCmtzeKcx/n6UZRwqFvymcBcPJf1sRjpxBLfwVqPi4zhrhU9ZhfS2CrQm/yx/ANsApjzQ0n4pAAAAAElFTkSuQmCC'>
+                                    <img id="platform" width="30px;" style="margin: 2px;"  *ngIf="platform.platform.name==='PC'" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAm0lEQVRIie3VPQrCQBBA4U9JbalNUukBbL2JHsMzRruA2ucsxiaBkMBujAgS82CYLd7uDMv+MBNhMXLeCnuk2LRyhjUeOHYLJNjVQtbJKW44126J7bvNF6gC8Wy5Ia+JXpVKnMYf7C4HiB8xrQKXiJuPdCfEVfhc52Pc+R78VoEi4g7Z9x5Ja3wQfq7bDZS1G+VbH84dp5Fr/xsvBmM1cN1w9kIAAAAASUVORK5CYII=">
+                                    <img id="platform" width="30px;" style="margin: 2px;"  *ngIf="platform.platform.name==='Xbox One'" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAEPUlEQVRoge3aS2wWVRQH8F9LaQWFSAviI6gsBDQaVxij+Ii6MDHG+CAxvkhIfC6MhoUbjXGpYjBxgxvFhe+IbJAoKArqQqILEWoFBKQQEisSX7ykdXG/icP33ZnOzPe1nzGc5CRtZ+7/nP/cc+8599xyUv5b0tFCrNNxJebjMsxCL6bVnv+KA/gJm2r6BQ620IfK0o3b8D4OY6SkHsbKGkb3OPsOOrEQ2ws4W1R34wFMqOJQlUHduBaTsFkIjVk4pYoDQsitxNv4BWdhL45XxGtKJuE+DCg+AwO1MVU/wJhKlxAe+2QT+BlPaMOa6MVy7Bemfi0WY2LOmNPwghAeCYG/sbT2LEs6caMQageFHe41zGiKAfrQL/5ld2KR/C38CmEdba79nCc359j6QRNkurEhAzit6zC7qhFchI8K2NmInioGni8AnugfeKQkfgcew6ESdpaVJXG1E+O7qL6BUwvgT8Y7FfCP47qiJLqEmK6a2L4qYOPzJvC31nw8QTojRhbj4gLOZEmROJ7SBP6FuH+0lyZgm+pfay/OL+DMOdjRhJ2dIrOSlluaAD+g3EzOxp4m7N2RB/5uRdBDWFCCRCJzhURbxeaqLNDJym2FaV1UgUQil2Cogs0jmBoDvL4iiaU5TvYJCXOt/Mx8lWrnmZtiYE9XAFoj+ygwE9+m3u0Xyv0suQfDJe0/GwN6qyTIduF4G5OzxeumXbggh8wzJX1YHQP5ugTAMVye4cy58rfwQczJGNuJj0v4sT0GsrsEwJMZjhTND/uFYjELo+ji/z0GUHTwBvF1caZyJ8R9mJdB5tYSOA3noiJEfsN5EcPT8V0J4+kwy6oEVhXEaCiJdhYYtCRicIpy66teB8S35jlCrsgbeyT2BUZzpl/jNE7Eh02QSHSTeCG5bJRxe2NE3hxl0L1173dgRQtIJLpOY5j0Cn2CrDGfxYjkJcQ9GqvNJS0kkeiKiF95uWV5jEheifJc3bsLcHQMiIzg8TpbM2TXgHfHiEzKGXBp6r2ZQmyOBYkRIdnWV9KxY/GwkHOi8l5kwI7U8058MoYkEt3lxPInllc2ZpEgfrB6OfV8LNZFlr6SsjtNYzPkoTwiXRpLjLtqz+bir3EkMix0cxLZmno2JJyfcuXBOsDk+LpmHEkkusW/PeLVqb8/NRoJQpLbkvoqPUI/drxJJJo0/l6t/T6oWO8M4f5jWKitCFdk7SLyoxDySfJdWJREIkuFVuj8NpJIdKHQGHk9y9m8G6v1QkhNFS452yld+FMIs6NVAPrwqfbPyDc4owqBtMySfW8xHvq90ANoiUzHl20gsVELZqJeuvGi8i2bKjqMl4zxPeMNyp3Ny+o2YfsfF+nBo5prQtfrIB7Wpv+A6MadQvlwrICz9XoEH+B2TRJo5T/VTMU1Qh93ntBRnCGcxUeEHtSQcEPbL1QL64Wke1L+d/IPWOSw6WmaF34AAAAASUVORK5CYII=">
+                                    <img id="platform" width="30px;" style="margin: 2px;"  *ngIf="platform.platform.name==='Nintendo Switch'"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAA+0lEQVRIie3VoUoEURSH8R8KGjZpUat1MfsIZovVJIJgEEFE7GLZICoWMditYrD5BL6AbFuLRayr4YpecWZ3Z3a5t8wHA/NnzplvZph7Dw0NCfksOZ4xM6T3cED/H6YqPNAKDirUD6SKGI7RziGexTWmU4thFTs5xHCC5VTie/S/z1u4LKj59/dOQvyEqyivYbNCf20xYTm9RLmDhRTiD2z5/aTzOEshhkfcRnkD6ynEsIfXKF9gLoX4DbtRXsJpzXv9ULbJHxXU3kXX+8KSG2lIjCteFN6+rGci06mIHvbrNI4rhhs85BDDNt5ziLvCrE4uhnNhP29oyMsXXpxI9snZklgAAAAASUVORK5CYII=">
+
+
+                                  </div>
+
+    </div>
+
+
+                            <div id="genres" class="   d-flex justify-content-md-start align-items-start text-muted ">
+
+                              <span class="m-3 mt-1 ">        Genres        </span>  <span class="m-1 mt-1">: </span>
+
+                                        <div class="mt-1 " *ngFor="let gen of games.genres let  i= index   ">
+                                           <p>
+                                            <span class="text-muted" *ngIf="i <=4">{{gen.name }}
+
+
+
+                                            <span *ngIf=" i !==games.genres.length-1"  class="m-1">,</span>
+
+
+
+                                          </span>
+                                        </p>
+
+                                        </div>
+
+
+
+
+
+                          </div>
+
+
+                  </div>
+
+                <div *ngIf="games.ratings.length"  id="btnMore" >
+
+
+                  <button mat-stroked-button color="warn" (click)="isOpen=false"  (click)="isOpen2=false"
+                  class="btn btn-outline-danger mt-1 m-1" (click)="this.openForMore(N)"
+                  (click)="this.isOpen3=true"
+                  >...</button>
+
+
+                </div>
+
+
+
+
+                      <!-- [@openClose]="N == this.Nopen ? 'open': 'closed' "  -->
+
+
+
+
+<!-- <div id="rate"  class="text-light mt-1"  *ngIf="N !== this.Nopen &&isOpen3==false"  style="height:20px ;"></div> -->
+
+
+
+<div style="height:90px ">
+
+       <h5 id="rate" class="text-light mt-1"  *ngIf="N == this.Nopen && isOpen==false"    > Rate in one click   </h5>
+
+       <!-- <div *ngIf="N !== this.Nopen &&isOpen3==false"   style="height: 130px;"></div> -->
+
+        <div id="formore"  class="d-flex jutify-content-start  " *ngIf="N == this.Nopen && isOpen3==true " >
+
+
+
+
+                                     <div  *ngFor="let rating of games.ratings let i= index " >
+
+
+                                        <!-- {{this.percentage(this.array[G].results[N].ratings[i].count/this.array[G].results[N].ratings_count * 100).toFixed()}} -->
+
+
+                                                      <button (click)='rating.count=rating.count+1'
+
+                                                      (click)="this.isOpen2=true"   (click)="this.isOpen=true"
+                                                    *ngIf="this.isOpen==false && N === this.Nopen"
+                                                      class="btn  m-1 "
+                                                      [ngClass]= "{
+                                                          'btn-outline-primary' :  rating.title ==='recommended' ,
+                                                          'btn-outline-danger' : rating.title ==='exceptional',
+                                                          'btn-outline-info' :  rating.title ==='meh',
+                                                          'btn-outline-success' :  rating.title ==='skip'
+
+                                                      }  ">     {{rating.title}}</button>
+
+
+                                                <circle-progress  class="position"
+
+                                                        *ngIf=" N === this.Nopen && this.isOpen2===true"
+
+
+                                                        [percent]='rating.percent'
+                                                        [subtitle]='rating.title '
+                                                        [radius]="40"
+                                                        [titleColor]='ReturnColor(rating.title)'
+                                                        [subtitleColor]='ReturnColor(rating.title)'
+
+                                                        [subtitleFontSize]="'9'"
+                                                        [unitsFontSize]="'12'"
+                                                        [unitsColor]='ReturnColor(rating.title)'
+                                                        [outerStrokeWidth]="5"
+                                                        [innerStrokeWidth]="3"
+                                                        [outerStrokeColor]='ReturnColor(rating.title)'
+                                                        [innerStrokeColor]="'white'"
+                                                        [animation]="true"
+                                                        [animationDuration]="800"
+
+                                                      ></circle-progress>
+
+
+
+                                            </div>
+
+
+     </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<!-- </div > for all objects -->
+
+
+<!-- <div id="space" class="container-fluid"  [@openClose]="N !== this.Nopen ? 'open': 'closed'" >
+
+
+</div>
+-->
+
+
+</div>
+</div>
+<div class="d-flex  align-items-center justify-content-around  mb-4" >
+
+<div class=" d-flex  align-items-center justify-items-around  mb-4"
+
+*ngFor="let bt of this.array ;let i=index " >
+
+<button
+
+
+class="btn btn-outline-danger mt-3"  (click)="RetApi(i)">{{i+1}}  </button>
+
+
+</div>
+
+</div>
+
+</div>
+
+
